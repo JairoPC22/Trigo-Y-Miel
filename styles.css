@@ -1115,3 +1115,8 @@ body:has(dialog[open]) { overflow: hidden; }
 .spec { padding-bottom: clamp(11rem, 17vw, 17rem); } @media (max-width: 899px) { .spec { padding-bottom: 3rem; } }
 @media (max-width: 899px) { .spec { padding-bottom: 7rem; } }
 .seq__cap { bottom: calc(var(--sh) * 9 / 100); } .seq__ticks { bottom: calc(var(--sh) * 3 / 100); }
+@media (max-width: 899px) {
+  .feature__photo { margin-left: 0; margin-right: 0; }
+  .feature__cut { inset: 0 6%; width: 88%; height: 100%; transform: translate3d(0, calc(var(--py, 0) * 1px - 14%), 0); }
+  .feature__disc { inset: 12% 4% auto 4%; }
+}
