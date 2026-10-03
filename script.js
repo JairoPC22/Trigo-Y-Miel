@@ -179,10 +179,10 @@
     schedule();
   };
   const curtain = $('.intro');
-  const fontsReady = document.fonts?.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 900))]) : Promise.resolve();
+  const fontsReady = document.fonts?.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 450))]) : Promise.resolve();
   if (reduce) { curtain.remove(); fontsReady.then(intro); }
   else {
-    fontsReady.then(() => setTimeout(intro, 250));
+    fontsReady.then(() => setTimeout(intro, 100));
     Promise.all([fontsReady, new Promise(r => setTimeout(r, 900))]).then(() => {
       curtain.classList.add('is-done');
       setTimeout(() => curtain.remove(), 1200);

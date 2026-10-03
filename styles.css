@@ -188,7 +188,7 @@ em { font-style: italic; }
 .info .ln > span { transform: translateY(108%); }
 .slide.is-leaving .info__num, .slide.is-leaving .info__cat, .slide.is-leaving .info__desc { transition: opacity .4s, transform .6s var(--ease-ed); }
 .slide.is-leaving .info .ln > span { transition: transform .55s var(--ease-ed); }
-.slide.is-active .info__num, .slide.is-active .info__cat, .slide.is-active .info__desc { opacity: 1; transform: none; transition: opacity .8s var(--ease-out) .5s, transform .9s var(--ease-out) .5s; }
+.slide.is-active .info__num, .slide.is-active .info__cat, .slide.is-active .info__desc { opacity: 1; transform: none; transition: opacity .6s var(--ease-out) .3s, transform .8s var(--ease-out) .3s; }
 .slide.is-active .info .ln > span { transform: none; transition: transform 1s var(--ease-out) calc(.38s + var(--k, 0) * .1s); }
 .slide.is-leaving .info .ln > span { transform: translateY(-108%); }
 .slide.is-leaving .info__num, .slide.is-leaving .info__cat, .slide.is-leaving .info__desc { transform: translateX(calc(var(--dir) * -26px)); }
