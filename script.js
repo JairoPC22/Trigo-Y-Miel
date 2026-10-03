@@ -102,12 +102,14 @@
     prev.classList.remove('is-active');
     prev.classList.add('is-leaving');
     prev.setAttribute('aria-hidden', 'true');
+    prev.inert = true;
     clearTimeout(prev._t);
     prev._t = setTimeout(() => prev.classList.remove('is-leaving'), 1250);
 
     next.classList.remove('is-leaving');
     next.classList.add('is-active');
     next.removeAttribute('aria-hidden');
+    next.inert = false;
 
     thumbs.forEach((t, i) => {
       t.classList.toggle('is-active', i === to);
@@ -180,9 +182,9 @@
   const fontsReady = document.fonts?.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 900))]) : Promise.resolve();
   if (reduce) { curtain.remove(); fontsReady.then(intro); }
   else {
-    Promise.all([fontsReady, new Promise(r => setTimeout(r, 2200))]).then(() => {
+    Promise.all([fontsReady, new Promise(r => setTimeout(r, 1100))]).then(() => {
       curtain.classList.add('is-done');
-      setTimeout(intro, 450);
+      setTimeout(intro, 300);
       setTimeout(() => curtain.remove(), 1400);
     });
   }
@@ -609,7 +611,8 @@
   };
   const persist = () => { try { localStorage.setItem('tym-quote', JSON.stringify(quote)); } catch { /* sin almacenamiento */ } };
   const totalQty = () => quote.reduce((n, q) => n + q.qty, 0);
-  const thumb = (p, cls) => p.img ? `<span class="${cls}"><img src="${p.img}" alt="" width="64" height="64"></span>` : `<span class="${cls} ${cls}--empty"></span>`;
+  const small = s => s.replace(/(img\/(?:cut|photo)\/)/, '$1t/');
+  const thumb = (p, cls) => p.img ? `<span class="${cls}"><img src="${small(p.img)}" alt="" width="64" height="64"></span>` : `<span class="${cls} ${cls}--empty"></span>`;
   const money = n => '$' + n.toLocaleString('es-MX') + ' MXN';
   const noteEl = $('#qd-note');
   try { noteEl.value = localStorage.getItem('tym-quote-note') || ''; } catch { /* sin almacenamiento */ }
@@ -636,7 +639,7 @@
     qc.textContent = n;
     qc.toggleAttribute('data-zero', !n);
     fab.classList.toggle('has-items', n > 0);
-    $('.qfab__stack', fab).innerHTML = quote.slice(0, 3).map(q => byId[q.id].img ? `<img src="${byId[q.id].img}" alt="">` : '').join('');
+    $('.qfab__stack', fab).innerHTML = quote.slice(0, 3).map(q => byId[q.id].img ? `<img src="${small(byId[q.id].img)}" alt="">` : '').join('');
     $('#qd-sub').textContent = `${n} ${n === 1 ? 'producto' : 'productos'}`;
     requestFrame();
     fab.setAttribute('aria-label', `Mi cotización, ${n} ${n === 1 ? 'producto' : 'productos'}`);

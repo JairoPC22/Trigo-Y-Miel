@@ -27,10 +27,10 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="manifest" href="manifest.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Montserrat:wght@400;500;600;700&display=swap">
-<link rel="preload" as="image" href="img/cut/pastel-limon.webp">
+<link rel="preload" href="fonts/bodoni-moda-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/montserrat-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bodoni-moda-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/cut/pastel-limon.webp" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 
 <script type="application/ld+json">
@@ -41,7 +41,7 @@
       "@type": "Bakery",
       "@id": "#chiautempan",
       "name": "Trigo y Miel Pastelería Gourmet — Chiautempan",
-      "image": "https://jairopc22.github.io/Trigo-Y-Miel/img/tienda-fachada.jpg",
+      "image": "https://jairopc22.github.io/Trigo-Y-Miel/img/tienda-fachada.webp",
       "logo": "https://jairopc22.github.io/Trigo-Y-Miel/trigo-y-miel-logo.png",
       "telephone": "+52 246 427 2786",
       "geo": { "@type": "GeoCoordinates", "latitude": 19.3215262, "longitude": -98.2095929 },
@@ -65,7 +65,7 @@
       "@type": "Bakery",
       "@id": "#apizaco",
       "name": "Trigo y Miel Pastelería Gourmet — Apizaco",
-      "image": "https://jairopc22.github.io/Trigo-Y-Miel/img/vitrina.jpg",
+      "image": "https://jairopc22.github.io/Trigo-Y-Miel/img/vitrina.webp",
       "logo": "https://jairopc22.github.io/Trigo-Y-Miel/trigo-y-miel-logo.png",
       "telephone": "+52 246 427 2786",
       "address": {
@@ -141,7 +141,7 @@
     <i class="spark" style="--x:12%;--y:14%;--d:0s"></i><i class="spark" style="--x:84%;--y:9%;--d:1.1s"></i><i class="spark" style="--x:93%;--y:56%;--d:2.2s"></i><i class="spark" style="--x:8%;--y:62%;--d:.6s"></i><i class="spark" style="--x:70%;--y:86%;--d:1.7s"></i>
 
     <article class="slide is-active" data-i="0" aria-roledescription="diapositiva" aria-label="1 de 5">
-      <div class="disc" data-cursor data-open="limon"><img src="img/cut/pastel-limon.webp" width="1000" height="1000" alt="Pastel de limón con rodajas de limón y crema sobre un pedestal blanco" fetchpriority="high"></div>
+      <div class="disc" data-cursor data-open="limon"><img src="img/cut/pastel-limon.webp" width="760" height="760" alt="Pastel de limón con rodajas de limón y crema sobre un pedestal blanco" fetchpriority="high"></div>
       <div class="info">
         <span class="info__num" aria-hidden="true">01</span>
         <p class="info__cat">Pastel</p>
@@ -151,8 +151,8 @@
       </div>
     </article>
 
-    <article class="slide" data-i="1" aria-roledescription="diapositiva" aria-label="2 de 5" aria-hidden="true">
-      <div class="disc" data-cursor data-open="fresas"><img src="img/cut/pastel-fresas.webp" width="1000" height="1000" alt="Pastel de fresas con crema y capas de bizcocho" loading="lazy"></div>
+    <article class="slide" data-i="1" aria-roledescription="diapositiva" aria-label="2 de 5" aria-hidden="true" inert>
+      <div class="disc" data-cursor data-open="fresas"><img src="img/cut/pastel-fresas.webp" width="760" height="760" alt="Pastel de fresas con crema y capas de bizcocho" loading="lazy"></div>
       <div class="info">
         <span class="info__num" aria-hidden="true">02</span>
         <p class="info__cat">Pastel</p>
@@ -162,8 +162,8 @@
       </div>
     </article>
 
-    <article class="slide" data-i="2" aria-roledescription="diapositiva" aria-label="3 de 5" aria-hidden="true">
-      <div class="disc" data-cursor data-open="aleman"><img src="img/cut/pastel-aleman.webp" width="1000" height="1000" alt="Pastel alemán de chocolate con crema y cerezas" loading="lazy"></div>
+    <article class="slide" data-i="2" aria-roledescription="diapositiva" aria-label="3 de 5" aria-hidden="true" inert>
+      <div class="disc" data-cursor data-open="aleman"><img src="img/cut/pastel-aleman.webp" width="760" height="760" alt="Pastel alemán de chocolate con crema y cerezas" loading="lazy"></div>
       <div class="info">
         <span class="info__num" aria-hidden="true">03</span>
         <p class="info__cat">Pastel</p>
@@ -173,8 +173,8 @@
       </div>
     </article>
 
-    <article class="slide" data-i="3" aria-roledescription="diapositiva" aria-label="4 de 5" aria-hidden="true">
-      <div class="disc" data-cursor data-open="almendra"><img src="img/cut/pastel-nuez-caramelo.webp" width="1000" height="1000" alt="Pastel con almendras laminadas y gotas de chocolate" loading="lazy"></div>
+    <article class="slide" data-i="3" aria-roledescription="diapositiva" aria-label="4 de 5" aria-hidden="true" inert>
+      <div class="disc" data-cursor data-open="almendra"><img src="img/cut/pastel-nuez-caramelo.webp" width="760" height="760" alt="Pastel con almendras laminadas y gotas de chocolate" loading="lazy"></div>
       <div class="info">
         <span class="info__num" aria-hidden="true">04</span>
         <p class="info__cat">Pastel</p>
@@ -184,8 +184,8 @@
       </div>
     </article>
 
-    <article class="slide" data-i="4" aria-roledescription="diapositiva" aria-label="5 de 5" aria-hidden="true">
-      <div class="disc" data-cursor data-open="pan-dorado"><img src="img/cut/pan-muerto-dorado.webp" width="1000" height="1000" alt="Pan de muerto dorado con azúcar" loading="lazy"></div>
+    <article class="slide" data-i="4" aria-roledescription="diapositiva" aria-label="5 de 5" aria-hidden="true" inert>
+      <div class="disc" data-cursor data-open="pan-dorado"><img src="img/cut/pan-muerto-dorado.webp" width="760" height="760" alt="Pan de muerto dorado con azúcar" loading="lazy"></div>
       <div class="info">
         <span class="info__num" aria-hidden="true">05</span>
         <p class="info__cat">Temporada</p>
@@ -199,11 +199,11 @@
 
   <div class="hero__ctrl" role="group" aria-label="Controles del carrusel">
     <ol class="thumbs">
-      <li><button type="button" class="thumb is-active" data-go="0" aria-label="Ir a Pastel de limón Sevillano" aria-current="true"><img src="img/cut/pastel-limon.webp" width="1000" height="1000" alt=""><span class="thumb__n">01</span></button></li>
-      <li><button type="button" class="thumb" data-go="1" aria-label="Ir a Pastel de fresas"><img src="img/cut/pastel-fresas.webp" width="1000" height="1000" alt="" loading="lazy"><span class="thumb__n">02</span></button></li>
-      <li><button type="button" class="thumb" data-go="2" aria-label="Ir a Pastel alemán"><img src="img/cut/pastel-aleman.webp" width="1000" height="1000" alt="" loading="lazy"><span class="thumb__n">03</span></button></li>
-      <li><button type="button" class="thumb" data-go="3" aria-label="Ir a Pastel de almendra"><img src="img/cut/pastel-nuez-caramelo.webp" width="1000" height="1000" alt="" loading="lazy"><span class="thumb__n">04</span></button></li>
-      <li><button type="button" class="thumb" data-go="4" aria-label="Ir a Pan de muerto"><img src="img/cut/pan-muerto-dorado.webp" width="1000" height="1000" alt="" loading="lazy"><span class="thumb__n">05</span></button></li>
+      <li><button type="button" class="thumb is-active" data-go="0" aria-label="Ir a Pastel de limón Sevillano" aria-current="true"><img src="img/cut/t/pastel-limon.webp" width="160" height="160" alt=""><span class="thumb__n">01</span></button></li>
+      <li><button type="button" class="thumb" data-go="1" aria-label="Ir a Pastel de fresas"><img src="img/cut/t/pastel-fresas.webp" width="160" height="160" alt="" loading="lazy"><span class="thumb__n">02</span></button></li>
+      <li><button type="button" class="thumb" data-go="2" aria-label="Ir a Pastel alemán"><img src="img/cut/t/pastel-aleman.webp" width="160" height="160" alt="" loading="lazy"><span class="thumb__n">03</span></button></li>
+      <li><button type="button" class="thumb" data-go="3" aria-label="Ir a Pastel de almendra"><img src="img/cut/t/pastel-nuez-caramelo.webp" width="160" height="160" alt="" loading="lazy"><span class="thumb__n">04</span></button></li>
+      <li><button type="button" class="thumb" data-go="4" aria-label="Ir a Pan de muerto"><img src="img/cut/t/pan-muerto-dorado.webp" width="160" height="160" alt="" loading="lazy"><span class="thumb__n">05</span></button></li>
     </ol>
     <div class="arrows">
       <button type="button" class="arrow" data-step="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12H4m6-6-6 6 6 6"/></svg></button>
@@ -329,34 +329,34 @@
         <span class="cat__tag">Temporada</span>
         <button type="button" class="cat__add" data-add="pan-negro" aria-label="Agregar Pan de muerto negro a mi cotización"><span>Cotizar</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
       </li>
-      <li class="cat__row" data-id="polvorones" data-cat="galletas" data-cat-label="Galletas" data-name="Polvorones de nuez y piñón" data-img="img/photo/galleta-nuez-pinon.jpg" data-desc="Referencia de la vitrina. Consulta presentación y disponibilidad en sucursal.">
-        <span class="cat__n">14</span><span class="cat__thumb"><img src="img/photo/galleta-nuez-pinon.jpg" width="64" height="64" alt="" loading="lazy"></span>
+      <li class="cat__row" data-id="polvorones" data-cat="galletas" data-cat-label="Galletas" data-name="Polvorones de nuez y piñón" data-img="img/photo/galleta-nuez-pinon.webp" data-desc="Referencia de la vitrina. Consulta presentación y disponibilidad en sucursal.">
+        <span class="cat__n">14</span><span class="cat__thumb"><img src="img/photo/galleta-nuez-pinon.webp" width="900" height="1100" alt="" loading="lazy"></span>
         <button type="button" class="cat__name" data-open="polvorones">Polvorones de nuez y piñón</button>
         <span class="cat__tag">Galletas</span>
         <button type="button" class="cat__add" data-add="polvorones" aria-label="Agregar Polvorones de nuez y piñón a mi cotización"><span>Cotizar</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
       </li>
-      <li class="cat__row" data-id="cookie-chip" data-cat="galletas" data-cat-label="Galletas" data-name="Galleta Classic Chocolate Chip" data-img="img/photo/galleta-chips.jpg" data-price="350" data-desc="Galleta del menú de la pastelería.">
-        <span class="cat__n">15</span><span class="cat__thumb"><img src="img/photo/galleta-chips.jpg" width="64" height="64" alt="" loading="lazy"></span>
+      <li class="cat__row" data-id="cookie-chip" data-cat="galletas" data-cat-label="Galletas" data-name="Galleta Classic Chocolate Chip" data-img="img/photo/galleta-chips.webp" data-price="350" data-desc="Galleta del menú de la pastelería.">
+        <span class="cat__n">15</span><span class="cat__thumb"><img src="img/photo/galleta-chips.webp" width="900" height="1100" alt="" loading="lazy"></span>
         <button type="button" class="cat__name" data-open="cookie-chip">Galleta Classic Chocolate Chip</button>
         <span class="cat__price">MXN 350</span>
         <span class="cat__tag">Galletas</span>
         <button type="button" class="cat__add" data-add="cookie-chip" aria-label="Agregar Galleta Classic Chocolate Chip a mi cotización"><span>Cotizar</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
       </li>
-      <li class="cat__row" data-id="cookie-double" data-cat="galletas" data-cat-label="Galletas" data-name="Galleta Double Chocolate" data-img="img/photo/galleta-doble-chocolate.jpg" data-price="400" data-desc="Galleta del menú de la pastelería.">
-        <span class="cat__n">16</span><span class="cat__thumb"><img src="img/photo/galleta-doble-chocolate.jpg" width="64" height="64" alt="" loading="lazy"></span>
+      <li class="cat__row" data-id="cookie-double" data-cat="galletas" data-cat-label="Galletas" data-name="Galleta Double Chocolate" data-img="img/photo/galleta-doble-chocolate.webp" data-price="400" data-desc="Galleta del menú de la pastelería.">
+        <span class="cat__n">16</span><span class="cat__thumb"><img src="img/photo/galleta-doble-chocolate.webp" width="900" height="1100" alt="" loading="lazy"></span>
         <button type="button" class="cat__name" data-open="cookie-double">Galleta Double Chocolate</button>
         <span class="cat__price">MXN 400</span>
         <span class="cat__tag">Galletas</span>
         <button type="button" class="cat__add" data-add="cookie-double" aria-label="Agregar Galleta Double Chocolate a mi cotización"><span>Cotizar</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
       </li>
-      <li class="cat__row" data-id="pistache" data-cat="pasteles" data-cat-label="Pastel" data-name="Pastel de pistache" data-img="img/photo/pastel-pistache.jpg" data-desc="Crema con ondas y pistache.">
-        <span class="cat__n">17</span><span class="cat__thumb"><img src="img/photo/pastel-pistache.jpg" width="64" height="64" alt="" loading="lazy"></span>
+      <li class="cat__row" data-id="pistache" data-cat="pasteles" data-cat-label="Pastel" data-name="Pastel de pistache" data-img="img/photo/pastel-pistache.webp" data-desc="Crema con ondas y pistache.">
+        <span class="cat__n">17</span><span class="cat__thumb"><img src="img/photo/pastel-pistache.webp" width="900" height="1100" alt="" loading="lazy"></span>
         <button type="button" class="cat__name" data-open="pistache">Pastel de pistache</button>
         <span class="cat__tag">Pastel</span>
         <button type="button" class="cat__add" data-add="pistache" aria-label="Agregar Pastel de pistache a mi cotización"><span>Cotizar</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
       </li>
-      <li class="cat__row" data-id="macarron" data-cat="postres" data-cat-label="Postre" data-name="Macarrón" data-img="img/photo/macarron.jpg" data-desc="Macarrón relleno de la vitrina.">
-        <span class="cat__n">18</span><span class="cat__thumb"><img src="img/photo/macarron.jpg" width="64" height="64" alt="" loading="lazy"></span>
+      <li class="cat__row" data-id="macarron" data-cat="postres" data-cat-label="Postre" data-name="Macarrón" data-img="img/photo/macarron.webp" data-desc="Macarrón relleno de la vitrina.">
+        <span class="cat__n">18</span><span class="cat__thumb"><img src="img/photo/macarron.webp" width="900" height="1100" alt="" loading="lazy"></span>
         <button type="button" class="cat__name" data-open="macarron">Macarrón</button>
         <span class="cat__tag">Postre</span>
         <button type="button" class="cat__add" data-add="macarron" aria-label="Agregar Macarrón a mi cotización"><span>Cotizar</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
@@ -370,7 +370,7 @@
 <section class="feature" id="destacado" aria-labelledby="feat-title">
   <div class="feature__photo" data-cursor data-open="cafe" role="button" tabindex="0" aria-label="Ver detalle: Pastel de chocolate y trufas">
     <div class="feature__disc" aria-hidden="true"></div>
-    <img class="feature__cut" src="img/cut/pastel-cafe.webp" width="1000" height="1000" alt="Pastel de chocolate con crema rosa y trufas sobre pedestal blanco" loading="lazy" data-parallax="0.12">
+    <img class="feature__cut" src="img/cut/pastel-cafe.webp" width="760" height="760" alt="Pastel de chocolate con crema rosa y trufas sobre pedestal blanco" loading="lazy" data-parallax="0.12">
   </div>
 
   <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
@@ -412,7 +412,7 @@
     <p class="about__text" data-words>Trigo y Miel es un rincón dulce donde la repostería es más que un pastel. Elaboramos pasteles y postres con ingredientes selectos de alta calidad y recetas refinadas, para compartirlos en Chiautempan y Apizaco.</p>
   </div>
   <figure class="about__photo" data-reveal="clip">
-    <div class="piece__img"><img src="img/tienda-fachada.jpg" width="1200" height="1600" alt="Entrada de la sucursal de Chiautempan decorada con flores secas" loading="lazy"></div>
+    <div class="piece__img"><img src="img/tienda-fachada.webp" width="1200" height="1600" alt="Entrada de la sucursal de Chiautempan decorada con flores secas" loading="lazy"></div>
     <figcaption>Sucursal Chiautempan</figcaption>
   </figure>
 </section>
@@ -423,22 +423,22 @@
     <div class="seq__track">
       <article class="seq__panel seq__panel--trigo" data-p="0">
         <div class="seq__word" aria-hidden="true">TRIGO</div>
-        <div class="seq__photo" data-cursor data-open="pan-crema" role="button" tabindex="0" aria-label="Ver detalle: Panes de muerto con crema"><img src="img/cut/pan-muerto-crema.webp" width="1000" height="1000" alt="Dos panes de temporada rellenos de crema" loading="lazy"></div>
+        <div class="seq__photo" data-cursor data-open="pan-crema" role="button" tabindex="0" aria-label="Ver detalle: Panes de muerto con crema"><img src="img/cut/pan-muerto-crema.webp" width="760" height="760" alt="Dos panes de temporada rellenos de crema" loading="lazy"></div>
         <p class="seq__cap"><span>01 / 04</span>Donde todo empieza.</p>
       </article>
       <article class="seq__panel seq__panel--miel" data-p="1">
         <div class="seq__word" aria-hidden="true">MIEL</div>
-        <div class="seq__photo" data-cursor data-open="crema-nuez" role="button" tabindex="0" aria-label="Ver detalle: Pastel de crema y nuez"><img src="img/cut/pastel-crema-nuez.webp" width="1000" height="1000" alt="Pastel de crema con nueces sobre pedestal blanco" loading="lazy"></div>
+        <div class="seq__photo" data-cursor data-open="crema-nuez" role="button" tabindex="0" aria-label="Ver detalle: Pastel de crema y nuez"><img src="img/cut/pastel-crema-nuez.webp" width="760" height="760" alt="Pastel de crema con nueces sobre pedestal blanco" loading="lazy"></div>
         <p class="seq__cap"><span>02 / 04</span>El toque que lo ilumina.</p>
       </article>
       <article class="seq__panel seq__panel--choc" data-p="2">
         <div class="seq__word" aria-hidden="true">CHOCOLATE</div>
-        <div class="seq__photo" data-cursor data-open="chocolate" role="button" tabindex="0" aria-label="Ver detalle: Pastel de chocolate con flores"><img src="img/cut/pastel-chocolate.webp" width="1000" height="1000" alt="Pastel de chocolate con trufas y flores comestibles" loading="lazy"></div>
+        <div class="seq__photo" data-cursor data-open="chocolate" role="button" tabindex="0" aria-label="Ver detalle: Pastel de chocolate con flores"><img src="img/cut/pastel-chocolate.webp" width="760" height="760" alt="Pastel de chocolate con trufas y flores comestibles" loading="lazy"></div>
         <p class="seq__cap"><span>03 / 04</span>Profundo y brillante.</p>
       </article>
       <article class="seq__panel seq__panel--horno" data-p="3">
         <div class="seq__word" aria-hidden="true">HORNO</div>
-        <div class="seq__photo" data-cursor data-open="pan-dorado" role="button" tabindex="0" aria-label="Ver detalle: Pan de muerto dorado"><img src="img/cut/pan-muerto-dorado.webp" width="1000" height="1000" alt="Pan de muerto dorado con azúcar" loading="lazy"></div>
+        <div class="seq__photo" data-cursor data-open="pan-dorado" role="button" tabindex="0" aria-label="Ver detalle: Pan de muerto dorado"><img src="img/cut/pan-muerto-dorado.webp" width="760" height="760" alt="Pan de muerto dorado con azúcar" loading="lazy"></div>
         <p class="seq__cap"><span>04 / 04</span>El calor que lo termina.</p>
       </article>
     </div>
@@ -489,10 +489,10 @@
 
     <figure class="voices__wall">
       <ul class="voices__shots" aria-label="Productos de la vitrina">
-        <li><img src="img/photo/macaron-rosa.jpg" width="960" height="1200" alt="Macarrón rosa relleno, de cerca" loading="lazy"></li>
-        <li><img src="img/photo/galletas-chips.jpg" width="960" height="1200" alt="Galletas con chispas de chocolate recién horneadas" loading="lazy"></li>
-        <li><img src="img/photo/macaron-pistache.jpg" width="960" height="1200" alt="Macarrón de pistache relleno" loading="lazy"></li>
-        <li><img src="img/photo/macaron-chocolate.jpg" width="960" height="1200" alt="Macarrón de chocolate con relleno de ganache" loading="lazy"></li>
+        <li><img src="img/photo/macaron-rosa.webp" width="900" height="1100" alt="Macarrón rosa relleno, de cerca" loading="lazy"></li>
+        <li><img src="img/photo/galletas-chips.webp" width="900" height="1100" alt="Galletas con chispas de chocolate recién horneadas" loading="lazy"></li>
+        <li><img src="img/photo/macaron-pistache.webp" width="900" height="1100" alt="Macarrón de pistache relleno" loading="lazy"></li>
+        <li><img src="img/photo/macaron-chocolate.webp" width="900" height="1100" alt="Macarrón de chocolate con relleno de ganache" loading="lazy"></li>
       </ul>
       <figcaption>De la vitrina</figcaption>
     </figure>
@@ -521,12 +521,12 @@
   </article>
 
   <figure class="shops__photo" data-reveal="clip">
-    <div class="piece__img"><img src="img/vitrina-ancha.jpg" width="1600" height="900" alt="Vitrina con pasteles, galletas y roles dentro de la pastelería" loading="lazy"></div>
+    <div class="piece__img"><img src="img/vitrina-ancha.webp" width="1600" height="900" alt="Vitrina con pasteles, galletas y roles dentro de la pastelería" loading="lazy"></div>
     <figcaption>Vitrina · Chiautempan</figcaption>
   </figure>
 
   <figure class="shops__photo2" data-reveal="clip">
-    <div class="piece__img"><img src="img/apizaco.jpg" width="335" height="597" alt="Interior de la sucursal de Apizaco: letrero de Trigo y Miel sobre mármol y vitrina con pasteles" loading="lazy"></div>
+    <div class="piece__img"><img src="img/apizaco.webp" width="335" height="597" alt="Interior de la sucursal de Apizaco: letrero de Trigo y Miel sobre mármol y vitrina con pasteles" loading="lazy"></div>
     <figcaption>Sucursal Apizaco</figcaption>
   </figure>
 
@@ -654,10 +654,10 @@
     </div>
   </div>
   <ul class="ig__grid">
-    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: entrada de la sucursal"><img src="img/tienda-fachada.jpg" width="1200" height="1600" alt="" loading="lazy"></a></li>
-    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: galletas"><img src="img/photo/galleta-chips.jpg" width="825" height="1100" alt="" loading="lazy"></a></li>
-    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: macarrón"><img src="img/photo/macarron.jpg" width="825" height="1100" alt="" loading="lazy"></a></li>
-    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: vitrina"><img src="img/vitrina.jpg" width="1200" height="1600" alt="" loading="lazy"></a></li>
+    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: entrada de la sucursal"><img src="img/tienda-fachada.webp" width="1200" height="1600" alt="" loading="lazy"></a></li>
+    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: galletas"><img src="img/photo/galleta-chips.webp" width="900" height="1100" alt="" loading="lazy"></a></li>
+    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: macarrón"><img src="img/photo/macarron.webp" width="900" height="1100" alt="" loading="lazy"></a></li>
+    <li><a href="https://www.instagram.com/pasteleria_trigoymiel/" target="_blank" rel="noopener" aria-label="Instagram de Trigo y Miel: vitrina"><img src="img/vitrina.webp" width="1200" height="1600" alt="" loading="lazy"></a></li>
   </ul>
 </section>
 
@@ -712,7 +712,7 @@
 <dialog class="pd" id="pd" aria-labelledby="pd-title">
   <div class="pd__stage">
     <div class="pd__ring" aria-hidden="true"></div>
-    <img class="pd__img" src="" alt="" width="1000" height="1000" decoding="async">
+    <img class="pd__img" src="" alt="" width="760" height="760" decoding="async">
     <div class="pd__ph" hidden><span class="pd__ph-cat"></span><span class="pd__ph-note">Foto próximamente</span></div>
     <span class="pd__n" aria-hidden="true"></span>
     <button type="button" class="pd__arrow pd__arrow--prev" data-pd="-1" aria-label="Producto anterior"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12H4m6-6-6 6 6 6"/></svg></button>
@@ -808,7 +808,6 @@
 
     <h3>Servicios de terceros</h3>
     <ul>
-      <li>Las tipografías se cargan desde Google Fonts.</li>
       <li>Los botones “Ver ubicación” abren Google Maps.</li>
       <li>Los enlaces a Facebook e Instagram abren esas plataformas.</li>
     </ul>
