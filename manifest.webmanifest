@@ -1,0 +1,14 @@
+{
+  "name": "Trigo y Miel | Pastelería Gourmet",
+  "short_name": "Trigo y Miel",
+  "description": "Pastelería gourmet en Chiautempan y Apizaco, Tlaxcala.",
+  "lang": "es-MX",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F7F1E8",
+  "theme_color": "#580614",
+  "icons": [
+    { "src": "trigo-y-miel-favicon.ico", "sizes": "16x16 24x24 32x32 48x48 64x64 128x128 256x256", "type": "image/x-icon" },
+    { "src": "trigo-y-miel-logo.png", "sizes": "447x447", "type": "image/png", "purpose": "any" }
+  ]
+}
