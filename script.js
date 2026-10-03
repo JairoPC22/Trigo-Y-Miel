@@ -182,10 +182,10 @@
   const fontsReady = document.fonts?.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 900))]) : Promise.resolve();
   if (reduce) { curtain.remove(); fontsReady.then(intro); }
   else {
-    Promise.all([fontsReady, new Promise(r => setTimeout(r, 1100))]).then(() => {
+    fontsReady.then(() => setTimeout(intro, 250));
+    Promise.all([fontsReady, new Promise(r => setTimeout(r, 900))]).then(() => {
       curtain.classList.add('is-done');
-      setTimeout(intro, 300);
-      setTimeout(() => curtain.remove(), 1400);
+      setTimeout(() => curtain.remove(), 1200);
     });
   }
 
