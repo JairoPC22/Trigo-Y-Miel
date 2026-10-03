@@ -1107,3 +1107,5 @@ body:has(dialog[open]) { overflow: hidden; }
 .feature { padding-bottom: clamp(3rem, 6vw, 5rem); }
 .feature__photo { margin-top: calc(-1 * clamp(3rem, 6vw, 5rem)); }
 .cat { margin-top: 0; } .spec { padding-top: clamp(3.5rem, 7vw, 6rem); }
+.spec { padding-bottom: clamp(11rem, 17vw, 17rem); } @media (max-width: 899px) { .spec { padding-bottom: 3rem; } }
+@media (max-width: 899px) { .spec { padding-bottom: 7rem; } }
