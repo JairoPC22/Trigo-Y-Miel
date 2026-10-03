@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://jairopc22.github.io/Trigo-Y-Miel/sitemap.xml
