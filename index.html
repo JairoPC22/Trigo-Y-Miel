@@ -105,7 +105,7 @@
         <li><a href="#sucursales" data-nav="sucursales">Sucursales</a></li>
       </ul>
       <a class="btn btn--wine nav__cta" href="#encargar">Encargar</a>
-      <p class="nav__foot">Chiautempan · Apizaco<br><a href="tel:+522464272786">+52 246 427 2786</a></p>
+      <p class="nav__foot">Chiautempan · Apizaco<br><a href="tel:+522464272786">246 427 2786</a></p>
     </nav>
 
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
@@ -547,7 +547,7 @@
     <p class="shop__state" data-state aria-live="polite"></p>
     <div class="shop__links">
       <a class="btn btn--line" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Trigo+y+Miel+Pasteler%C3%ADa+Gourmet+Carr.+Sta.+Ana+-+Tlaxcala+151-B+Industrial+90802+Santa+Ana+Chiautempan+Tlaxcala">Ver ubicación<span class="sr-only"> de Chiautempan en Google Maps</span></a>
-      <a class="shop__tel" href="tel:+522464272786">+52 246 427 2786</a>
+      <a class="shop__tel" href="tel:+522464272786">246 427 2786</a>
     </div>
   </article>
 
@@ -572,7 +572,7 @@
     <p class="shop__state" data-state aria-live="polite"></p>
     <div class="shop__links">
       <a class="btn btn--line" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Trigo+y+Miel+Pasteler%C3%ADa+Gourmet+Av.+Xicohtencatl+108+Centro+90300+Apizaco+Tlaxcala">Ver ubicación<span class="sr-only"> de Apizaco en Google Maps</span></a>
-      <a class="shop__tel" href="tel:+522464272786">+52 246 427 2786</a>
+      <a class="shop__tel" href="tel:+522464272786">246 427 2786</a>
     </div>
   </article>
 </section>
@@ -661,7 +661,8 @@
       <h3>Tu idea, lista.</h3>
       <p class="summary__text" id="summary-text"></p>
       <div class="summary__actions">
-        <a class="btn btn--wine" href="tel:+522464272786">Llamar a sucursal</a>
+        <a class="btn btn--wine" id="wa-summary" href="https://wa.me/522464272786" target="_blank" rel="noopener">Enviar por WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a>
+        <a class="btn btn--ghost" href="tel:+522464272786">Llamar</a>
         <button class="btn btn--ghost" type="button" id="copy-summary">Copiar resumen</button>
       </div>
       <p class="summary__ok" id="copy-ok" role="status"></p>
@@ -720,7 +721,8 @@
     <div class="foot__nav">
       <h2>Contacto</h2>
       <ul>
-        <li><a href="tel:+522464272786">+52 246 427 2786</a></li>
+        <li><a href="tel:+522464272786">246 427 2786</a></li>
+        <li><a href="https://wa.me/522464272786" target="_blank" rel="noopener">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a></li>
         <li><a href="https://www.facebook.com/PasteleriaTrigoyMiel" target="_blank" rel="noopener">Facebook</a></li>
         <li><a href="https://www.instagram.com/pasteleria_trigoymiel" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
@@ -786,6 +788,7 @@
     <div class="qd__tools">
       <button type="button" class="tool" id="qd-copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="1"/><path d="M5 15V6a1 1 0 0 1 1-1h9"/></svg>Copiar</button>
       <button type="button" class="tool" id="qd-share" hidden><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 11l8-4M8 13l8 4"/></svg>Compartir</button>
+      <a class="tool" id="wa-quote" href="https://wa.me/522464272786" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.2-4A8 8 0 1 1 8 18.8L4 20z"/></svg>WhatsApp</a>
       <a class="tool" href="tel:+522464272786"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 4h3l1.5 4-2 1.3a10 10 0 0 0 5.2 5.2l1.3-2 4 1.5v3a2 2 0 0 1-2 2A14 14 0 0 1 4 6a2 2 0 0 1 2-2z"/></svg>Llamar</a>
       <button type="button" class="tool tool--danger" id="qd-clear">Vaciar</button>
     </div>
@@ -796,7 +799,7 @@
 <dialog class="id" id="faq" aria-labelledby="faq-title">
   <header class="id__head"><h2 id="faq-title">Preguntas frecuentes</h2><button type="button" class="pd__close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg></button></header>
   <div class="id__body">
-    <details open><summary>¿Cómo encargo un pastel?</summary><p>Usa la sección “Encargar”: elige ocasión, tamaño y fecha, agrega los productos que te interesen y arma tu resumen. Después llámanos al +52 246 427 2786 o pasa a una sucursal para confirmarlo.</p></details>
+    <details open><summary>¿Cómo encargo un pastel?</summary><p>Usa la sección “Encargar”: elige ocasión, tamaño y fecha, agrega los productos que te interesen y arma tu resumen. Después llámanos al 246 427 2786 (llamada o WhatsApp) o pasa a una sucursal para confirmarlo.</p></details>
     <details><summary>¿Cuánto cuestan los productos?</summary><p>Esta página no publica precios. Costos y disponibilidad se confirman directamente en sucursal.</p></details>
     <details><summary>¿Dónde están y a qué hora abren?</summary><p>Chiautempan: Carr. Sta. Ana - Tlaxcala 151-B, Industrial. Apizaco: Av. Xicohtencatl 108, Centro. Los horarios aparecen en la sección Sucursales.</p></details>
     <details><summary>¿Todos los productos están siempre disponibles?</summary><p>No necesariamente. La oferta cambia con la temporada, por eso conviene consultar disponibilidad antes de pasar.</p></details>
@@ -844,7 +847,7 @@
     <p>Si el sitio empieza a recibir datos, por ejemplo con un formulario que se envíe por internet, este aviso se actualizará antes de hacerlo.</p>
 
     <h3>Contacto</h3>
-    <p>Para cualquier duda sobre tus datos, llama al +52 246 427 2786 o acude a una de las dos sucursales.</p>
+    <p>Para cualquier duda sobre tus datos, llama o escribe por WhatsApp al 246 427 2786 o acude a una de las dos sucursales.</p>
 
     <p class="id__note">Texto informativo del sitio. La pastelería debe revisarlo y, si recibe datos por otros medios, completar su aviso de privacidad oficial.</p>
   </div>

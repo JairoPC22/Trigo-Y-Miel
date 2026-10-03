@@ -519,8 +519,9 @@
       noteEl.value.trim() ? `Nota: ${noteEl.value.trim()}` : null,
       data.detalles ? `Detalles: ${data.detalles}` : null,
       '',
-      'Sucursales: Chiautempan y Apizaco · +52 246 427 2786'
+      'Sucursales: Chiautempan y Apizaco · 246 427 2786'
     ].filter(l => l !== null).join('\n');
+    $('#wa-summary').href = waUrl('Hola, quiero hacer un pedido:\n' + summaryText.textContent);
     summary.hidden = false;
     copyOk.textContent = '';
     summary.focus({ preventScroll: true });
@@ -604,6 +605,7 @@
     return lines.join('\n');
   }
 
+  const waUrl = t => 'https://wa.me/522464272786?text=' + encodeURIComponent(t);
   function renderQuote() {
     const n = totalQty();
     const qc = $('[data-qcount]', fab);
@@ -624,6 +626,7 @@
         <p class="qd__line">${unit ? money(unit * q.qty) : 'Por confirmar'}</p></div>
         <button type="button" class="qd__rm" data-q-rm aria-label="Quitar ${p.name} de la cotización"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg></button></li>`;
     }).join('');
+    $('#wa-quote').href = waUrl('Hola, quiero cotizar:\n' + quoteText());
     const e = estimate();
     $('#qd-total').textContent = e.priced ? money(e.total) : 'Por confirmar';
     $('#qd-total-note').textContent = e.priced
