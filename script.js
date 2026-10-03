@@ -36,6 +36,8 @@
   $$('a', nav).forEach(a => a.addEventListener('click', () => setMenu(false)));
   matchMedia('(min-width: 961px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
 
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); burger.focus(); } });
+
   nav.addEventListener('keydown', e => {
     if (e.key !== 'Tab' || !nav.classList.contains('is-open')) return;
     const f = [burger, ...$$('a', nav)];
@@ -156,7 +158,10 @@
     if (!tracking) return;
     tracking = false;
     const dx = e.clientX - sx, dy = e.clientY - sy;
-    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.3) go(current + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+      go(current + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+      addEventListener('click', ev => ev.stopPropagation(), { capture: true, once: true });
+    }
   });
   stage.addEventListener('pointercancel', () => { tracking = false; });
 
@@ -211,7 +216,6 @@
   /* Parallax, piezas desplazadas y secuencia horizontal comparten un solo ciclo de scroll. */
   const featureFrame = $('.feature__cut');
   const featurePhoto = $('.feature__photo');
-  const shifters = $$('[data-shift]');
   const seq = $('.seq');
   const panels = $$('.seq__panel');
   const ticks = $$('.seq__ticks li');
@@ -222,6 +226,8 @@
   const marqTrack = $('.marq__track');
   const seqTicks = $('.seq__ticks');
   const progress = $('.progress');
+  const qfabEl = $('#qfab');
+  const qcountEl = $('[data-qcount]');
   let ticking = false;
   let lastY = scrollY;
   let marqX = 0, marqSpeed = 0;
@@ -245,7 +251,7 @@
     ticking = false;
     const h = vh();
     header.classList.toggle('is-scrolled', window.scrollY > 24);
-    $('#qfab').classList.toggle('is-show', window.scrollY > h * .6 || $('[data-qcount]').textContent !== '0');
+    qfabEl.classList.toggle('is-show', window.scrollY > h * .6 || qcountEl.textContent !== '0');
     const max = document.documentElement.scrollHeight - h;
     const sp = max > 0 ? (window.scrollY / max).toFixed(4) : 0;
     progress.style.setProperty('--sp', sp);
@@ -258,13 +264,6 @@
       seal.style.setProperty('--rot', (window.scrollY * .18).toFixed(1) + 'deg');
       const fr = featurePhoto.getBoundingClientRect();
       if (fr.bottom > -100 && fr.top < h + 100) featureFrame.style.setProperty('--py', ((h / 2 - (fr.top + fr.height / 2)) * .09).toFixed(1));
-
-      shifters.forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.bottom < -100 || r.top > h + 100) return;
-        const d = Number(el.dataset.shift);
-        el.style.setProperty('--sx', clamp(d * (r.top + r.height / 2 - h / 2) * .07, -64, 64).toFixed(1));
-      });
 
       const sr = seq.getBoundingClientRect();
       if (sr.bottom > -50 && sr.top < h + 50) {
@@ -420,15 +419,18 @@
     const atMin = viewY === today.getFullYear() && viewM === today.getMonth();
     $('[data-cal="-1"]').disabled = atMin;
     $('[data-cal="-12"]').disabled = viewY <= today.getFullYear();
+    $('[data-cal="1"]').disabled = new Date(viewY, viewM + 1, 1) > lastMonth;
+    $('[data-cal="12"]').disabled = new Date(viewY, viewM + 12, 1) > lastMonth;
     if (!$('.cal__day[tabindex="0"]', calGrid)) {
       const first = $('.cal__day:not(:disabled)', calGrid);
       if (first) first.tabIndex = 0;
     }
   }
 
+  const lastMonth = new Date(today.getFullYear(), today.getMonth() + 24, 1);
   function moveView(months, dir) {
     const d = new Date(viewY, viewM + months, 1);
-    if (d < new Date(today.getFullYear(), today.getMonth(), 1)) return;
+    if (d < new Date(today.getFullYear(), today.getMonth(), 1) || d > lastMonth) return;
     viewY = d.getFullYear(); viewM = d.getMonth();
     const day = Math.min(focusDate.getDate(), new Date(viewY, viewM + 1, 0).getDate());
     focusDate = new Date(viewY, viewM, day);
@@ -497,7 +499,7 @@
     }
     if (!next) return;
     e.preventDefault();
-    if (next < today) return;
+    if (next < today || next > new Date(lastMonth.getFullYear(), lastMonth.getMonth() + 1, 0)) return;
     const sameMonth = next.getMonth() === viewM && next.getFullYear() === viewY;
     focusDate = next;
     if (sameMonth) { $$('.cal__day', calGrid).forEach(b => { b.tabIndex = b.dataset.date === key(next) ? 0 : -1; }); focusDay(); }
@@ -528,8 +530,10 @@
     if (!data.ocasion) errors.push(['ocasion', 'Elige una ocasión.', $('input[name="ocasion"]', form)]);
     if (!data.tamano) errors.push(['tamano', 'Elige un tamaño aproximado.', $('input[name="tamano"]', form)]);
     if (!selected) errors.push(['fecha', 'Elige una fecha en el calendario.', dateBtn]);
-    if (!data.nombre || data.telefono.replace(/\D/g, '').length < 8) {
-      errors.push(['contacto', 'Escribe tu nombre y un teléfono de al menos 8 dígitos.', !data.nombre ? form.nombre : form.telefono]);
+    const digits = data.telefono.replace(/\D/g, '');
+    if (!data.nombre) errors.push(['contacto', 'Escribe tu nombre.', form.nombre]);
+    else if (!/^[\d\s()+.-]+$/.test(data.telefono) || digits.length < 10 || digits.length > 13) {
+      errors.push(['contacto', 'Escribe un teléfono válido de 10 dígitos.', form.telefono]);
     }
     ['ocasion', 'tamano', 'fecha', 'contacto'].forEach(n => setError(n, ''));
     errors.forEach(([n, m]) => setError(n, m));
@@ -587,9 +591,15 @@
   /* Catálogo, vista de producto y cotización. El catálogo del HTML es la única fuente de datos. */
   const catRows = $$('.cat__row');
   const PRODUCTS = catRows.map(li => ({ id: li.dataset.id, name: li.dataset.name, cat: li.dataset.cat, label: li.dataset.catLabel, img: li.dataset.img, desc: li.dataset.desc, price: li.dataset.price }));
-  const byId = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+  const byId = Object.assign(Object.create(null), Object.fromEntries(PRODUCTS.map(p => [p.id, p])));
   let quote = [];
-  try { quote = JSON.parse(localStorage.getItem('tym-quote') || '[]').filter(q => byId[q.id] && q.qty > 0); } catch { quote = []; }
+  try {
+    const saved = JSON.parse(localStorage.getItem('tym-quote') || '[]');
+    quote = Array.isArray(saved) ? saved
+      .filter(q => q && typeof q.id === 'string' && byId[q.id] && Number(q.qty) >= 1)
+      .map(q => ({ id: q.id, qty: clamp(Math.round(Number(q.qty)), 1, 20) }))
+      .filter((q, i, a) => a.findIndex(x => x.id === q.id) === i) : [];
+  } catch { quote = []; }
 
   const toast = $('#toast');
   const fab = $('#qfab');
@@ -632,7 +642,7 @@
     return lines.join('\n');
   }
 
-  const waUrl = t => 'https://wa.me/522464272786?text=' + encodeURIComponent(t);
+  const waUrl = t => 'https://wa.me/522464272786?text=' + encodeURIComponent(t.length > 1400 ? t.slice(0, 1400) + '…' : t);
   function renderQuote() {
     const n = totalQty();
     const qc = $('[data-qcount]', fab);
@@ -667,6 +677,7 @@
 
   function addToQuote(id, qty = 1) {
     const item = quote.find(q => q.id === id);
+    if (item && item.qty >= 20) { say('Máximo 20 por producto. Para más, dilo en la nota.'); return; }
     if (item) item.qty = Math.min(20, item.qty + qty); else quote.push({ id, qty });
     persist(); renderQuote();
     fab.classList.remove('is-bump'); void fab.offsetWidth; fab.classList.add('is-bump');
@@ -680,7 +691,7 @@
     if (!quote[idx].qty) {
       quote.splice(idx, 1);
       persist(); renderQuote();
-      say(`Quitaste ${byId[id].name}`, { label: 'Deshacer', run: () => { quote.splice(Math.min(idx, quote.length), 0, before); persist(); renderQuote(); } });
+      say(`Quitaste ${byId[id].name}`, { label: 'Deshacer', run: () => { const dup = quote.find(x => x.id === before.id); if (dup) dup.qty = Math.min(20, dup.qty + before.qty); else quote.splice(Math.min(idx, quote.length), 0, before); persist(); renderQuote(); } });
       return;
     }
     persist(); renderQuote();
@@ -688,15 +699,19 @@
 
   /* Diálogos con salida animada */
   function openDlg(d) {
+    clearTimeout(d._ct);
+    d.classList.remove('is-out');
     if (!d.open) d.showModal();
     document.documentElement.classList.add('modal-open');
     requestAnimationFrame(() => d.classList.add('is-in'));
   }
   function closeDlg(d, after) {
     if (!d.open) { after?.(); return; }
+    if (d === pd) history.replaceState(null, '', location.pathname + location.search);
+    clearTimeout(d._ct);
     d.classList.remove('is-in');
     d.classList.add('is-out');
-    setTimeout(() => { d.close(); d.classList.remove('is-out'); if (!$('dialog[open]')) document.documentElement.classList.remove('modal-open'); after?.(); }, 240);
+    d._ct = setTimeout(() => { d.close(); d.classList.remove('is-out'); if (!$('dialog[open]')) document.documentElement.classList.remove('modal-open'); after?.(); }, 240);
   }
   const infoDlgs = $$('dialog.id');
   [pd, qd, ...infoDlgs].forEach(d => {
@@ -705,8 +720,7 @@
     $$('[data-close]', d).forEach(b => b.addEventListener('click', () => closeDlg(d, () => { if (b.dataset.goto) $(b.dataset.goto)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); })));
   });
 
-  /* Precarga de las fotos de producto en reposo, para que la ficha abra al instante. */
-  (window.requestIdleCallback || (f => setTimeout(f, 2500)))(() => PRODUCTS.forEach(p => { if (p.img) new Image().src = p.img; }));
+  /* Precarga solo de la foto que el visitante está a punto de abrir. */
   document.addEventListener('pointerover', e => { const t = e.target.closest('[data-open]'); if (t && byId[t.dataset.open]?.img) new Image().src = byId[t.dataset.open].img; }, { passive: true });
 
   /* Producto por separado */
@@ -798,7 +812,7 @@
     clearBtn.classList.remove('is-armed'); clearBtn.textContent = 'Vaciar';
     const old = quote.map(q => ({ ...q }));
     quote = []; persist(); renderQuote();
-    say('Vaciaste tu cotización', { label: 'Deshacer', run: () => { quote = old; persist(); renderQuote(); } });
+    say('Vaciaste tu cotización', { label: 'Deshacer', run: () => { old.forEach(o => { const d = quote.find(x => x.id === o.id); if (d) d.qty = Math.min(20, d.qty + o.qty); else quote.push(o); }); persist(); renderQuote(); } });
   });
   $('#qd-copy').addEventListener('click', async () => {
     try { await navigator.clipboard.writeText(quoteText()); $('#qd-ok').textContent = 'Lista copiada.'; } catch { $('#qd-ok').textContent = 'No se pudo copiar.'; }
@@ -843,26 +857,14 @@
   new IntersectionObserver(([en], o) => { if (en.isIntersecting) { catList.classList.add('is-anim'); o.disconnect(); } }, { threshold: .08 }).observe(catList);
 
   /* Enlace directo a un producto: index.html#p-limon */
-  const fromHash = () => { const m = location.hash.match(/^#p-(.+)$/); if (m && byId[m[1]] && !pd.open) { fillProduct(PRODUCTS.findIndex(p => p.id === m[1])); openDlg(pd); } };
+  const fromHash = () => { const m = location.hash.match(/^#p-([a-z0-9-]+)$/); if (m && byId[m[1]] && !pd.open) { fillProduct(PRODUCTS.findIndex(p => p.id === m[1])); openDlg(pd); } };
   addEventListener('hashchange', fromHash);
   setTimeout(fromHash, 1900);
   renderQuote();
 
-  /* Más movimiento: letras con ola en la secuencia, palabras en las citas e inclinación de piezas. */
+  /* Más movimiento: letras con ola en la secuencia y palabras en las citas. */
   $$('.seq__word').forEach(w => { w.innerHTML = [...w.textContent].map((ch, i) => `<span class="lt" style="--i:${i}">${ch}</span>`).join(''); });
   $$('.quote p').forEach(p => { p.innerHTML = p.textContent.trim().split(/\s+/).map((w, i) => `<span class="qw" style="--i:${i}">${w}</span>`).join(' '); });
-  if (finePointer && !reduce) {
-    $$('.collage .piece').forEach(pc => {
-      const box = $('.piece__img', pc);
-      pc.addEventListener('pointermove', e => {
-        const r = pc.getBoundingClientRect();
-        box.style.setProperty('--ry', (((e.clientX - r.left) / r.width - .5) * 9).toFixed(2) + 'deg');
-        box.style.setProperty('--rx', (-((e.clientY - r.top) / r.height - .5) * 9).toFixed(2) + 'deg');
-      });
-      pc.addEventListener('pointerleave', () => { box.style.setProperty('--rx', '0deg'); box.style.setProperty('--ry', '0deg'); });
-    });
-  }
-
   /* Cursor discreto: solo con puntero fino. */
   if (finePointer && !reduce) {
     const cur = $('.cursor');

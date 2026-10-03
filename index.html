@@ -611,8 +611,8 @@
     </div>
 
     <div class="field field--duo">
-      <label class="input"><span>Tu nombre</span><input type="text" name="nombre" autocomplete="name" required></label>
-      <label class="input"><span>Teléfono</span><input type="tel" name="telefono" autocomplete="tel" inputmode="tel" required></label>
+      <label class="input"><span>Tu nombre</span><input type="text" name="nombre" autocomplete="name" maxlength="60" required></label>
+      <label class="input"><span>Teléfono</span><input type="tel" name="telefono" autocomplete="tel" inputmode="tel" maxlength="20" required></label>
       <p class="err" data-err="contacto" role="alert"></p>
     </div>
 
@@ -622,7 +622,7 @@
       <button type="button" class="linkbtn" data-open-quote>Editar mi cotización</button>
     </div>
 
-    <label class="input input--area"><span>Detalles <i>(sabor, mensaje, referencia)</i></span><textarea name="detalles" rows="3"></textarea></label>
+    <label class="input input--area"><span>Detalles <i>(sabor, mensaje, referencia)</i></span><textarea name="detalles" rows="3" maxlength="500"></textarea></label>
 
     <div class="form__actions">
       <button class="btn btn--wine" type="submit">Armar mi resumen</button>
