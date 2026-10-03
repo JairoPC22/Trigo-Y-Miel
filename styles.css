@@ -1076,3 +1076,34 @@ body:has(dialog[open]) { overflow: hidden; }
   .foot__nav:last-of-type { border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 899px) { .foot__brand { grid-column: 1; } .foot__nav { grid-column: 1; } }
+
+/* Ajuste de ritmo: menos colores, menos texto grande */
+.seq__panel--trigo { background: var(--cream); color: var(--wine); }
+.seq__panel--miel { background: var(--wine); color: var(--cream); }
+.seq__panel--miel .seq__word, .seq__panel--horno .seq__word { color: var(--gold-light); }
+.seq__panel--choc { background: var(--cream); color: var(--wine); }
+.seq__panel--choc .seq__word { color: var(--wine); }
+.seq__panel--horno { background: var(--wine); color: var(--cream); }
+.seq__panel--trigo .seq__photo::before, .seq__panel--choc .seq__photo::before { background: var(--wine); border: 0; opacity: 1; }
+.seq__panel--miel .seq__photo::before, .seq__panel--horno .seq__photo::before { background: var(--wine-soft); border: 1px solid var(--gold); opacity: 1; }
+.seq__ticks.is-dark li { background: var(--cream); }
+.seq__ticks li { background: var(--wine); }
+.seq__panel--miel .seq__cap, .seq__panel--horno .seq__cap { color: var(--cream); }
+.voices, .ig { background: var(--cream); }
+.voices { border-top: 1px solid var(--line); }
+.ig { border-top: 1px solid var(--line); }
+.foot { background: var(--cream); }
+.spec { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.spec__head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.spec__head h2, .shops h2 { font-size: clamp(1.9rem, 3.6vw, 3.2rem); }
+.feature h2, .order h2 { font-size: clamp(1.9rem, 3.4vw, 3.1rem); }
+.shop__city { font-size: clamp(2rem, 3.8vw, 3.3rem); }
+.cat__name { font-size: clamp(1.1rem, 1.5vw, 1.4rem); }
+.facts__n { font-size: 1.5rem; }
+.quote p { font-size: clamp(1.25rem, 2.1vw, 1.9rem); }
+.about__text { font-size: clamp(1.15rem, 1.7vw, 1.5rem); }
+.ig h2 { font-size: clamp(1.7rem, 3vw, 2.6rem); }
+.foot__phrase { font-size: clamp(1.2rem, 2.1vw, 1.8rem); }
+.feature { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.feature__photo { margin-top: calc(-1 * clamp(3rem, 6vw, 5rem)); }
+.cat { margin-top: 0; } .spec { padding-top: clamp(3.5rem, 7vw, 6rem); }
