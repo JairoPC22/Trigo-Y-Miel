@@ -1045,3 +1045,34 @@ body:has(dialog[open]) { overflow: hidden; }
 .qd__info { padding-right: 1.8rem; }
 .qd__name { font-size: 1.1rem; }
 .qd__total span { flex: 1 1 8rem; } .qd__total b { flex: none; }
+
+/* Formulario plegable */
+.order__panel { grid-column: 7 / 13; display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s var(--ease-ed); }
+.order__panel-in { overflow: hidden; min-height: 0; visibility: hidden; transition: visibility 0s .6s; }
+.order.is-open .order__panel { grid-template-rows: 1fr; }
+.order.is-open .order__panel-in { visibility: visible; transition-delay: 0s; overflow: visible; }
+.order__panel .form { grid-column: auto; padding-bottom: .5rem; }
+.order__toggle { margin-top: 1.8rem; gap: .8rem; }
+.order__toggle svg { transition: transform .5s var(--ease-out); }
+.order.is-open .order__toggle svg { transform: rotate(180deg); }
+.order:not(.is-open) .order__intro { grid-column: 1 / 13; position: static; }
+.order:not(.is-open) { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.order.is-open .order__panel-in { animation: panelIn .7s var(--ease-out) .25s both; }
+@keyframes panelIn { from { opacity: 0; transform: translateY(18px); } }
+@media (max-width: 899px) { .order__panel { grid-column: 1; } .order:not(.is-open) { row-gap: 0; } }
+
+/* Menú del pie plegable */
+.foot__nav summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; list-style: none; cursor: pointer; min-height: 44px; }
+.foot__nav summary::-webkit-details-marker { display: none; }
+.foot__nav summary h2 { margin: 0; }
+.foot__nav summary::after { content: ""; width: 9px; height: 9px; border-right: 1.5px solid var(--wine); border-bottom: 1.5px solid var(--wine); transform: rotate(45deg) translateY(-2px); transition: transform .4s var(--ease-out); }
+.foot__nav[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
+.foot__nav ul { padding-top: .4rem; }
+@media (min-width: 900px) { .foot__nav summary { cursor: default; } .foot__nav summary::after { display: none; } }
+@media (max-width: 899px) {
+  .foot__main { grid-template-columns: 1fr; gap: 0; }
+  .foot__brand { padding-bottom: 1.4rem; }
+  .foot__nav { border-top: 1px solid var(--line); padding: .2rem 0; }
+  .foot__nav:last-of-type { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 899px) { .foot__brand { grid-column: 1; } .foot__nav { grid-column: 1; } }

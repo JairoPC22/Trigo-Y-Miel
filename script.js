@@ -352,6 +352,30 @@
     });
   })();
 
+  /* Formulario de encargo plegable: cerrado por defecto; se abre al pedir. */
+  const orderSec = $('#encargar');
+  const orderBtn = $('#order-toggle');
+  function setOrder(open, scroll) {
+    orderSec.classList.toggle('is-open', open);
+    orderBtn.setAttribute('aria-expanded', String(open));
+    $('[data-label]', orderBtn).textContent = open ? 'Ocultar formulario' : 'Armar mi pedido';
+    if (open && scroll) setTimeout(() => orderSec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }), 120);
+  }
+  orderBtn.addEventListener('click', () => setOrder(!orderSec.classList.contains('is-open'), false));
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href="#encargar"]');
+    if (a) setOrder(true, false);
+  });
+  if (location.hash === '#encargar') setOrder(true, false);
+  addEventListener('hashchange', () => { if (location.hash === '#encargar') setOrder(true, false); });
+
+  /* Menú del pie: plegado en celular, abierto en escritorio. */
+  const footNavs = $$('.foot__nav');
+  const footMq = matchMedia('(max-width: 899px)');
+  const syncFoot = () => footNavs.forEach(d => { d.open = !footMq.matches; });
+  syncFoot();
+  footMq.addEventListener('change', syncFoot);
+
   /* Calendario propio para la fecha del pedido. */
   const dateBtn = $('#date-btn');
   const dateVal = $('.datepick__val');
@@ -507,7 +531,7 @@
     }
     ['ocasion', 'tamano', 'fecha', 'contacto'].forEach(n => setError(n, ''));
     errors.forEach(([n, m]) => setError(n, m));
-    if (errors.length) { summary.hidden = true; errors[0][2].focus(); return; }
+    if (errors.length) { setOrder(true, false); summary.hidden = true; errors[0][2].focus(); return; }
 
     summaryText.textContent = [
       `Ocasión: ${data.ocasion}`,
@@ -741,7 +765,7 @@
     const id = PRODUCTS[pdIndex].id;
     if (!quote.some(q => q.id === id)) addToQuote(id);
     closeProduct();
-    setTimeout(() => $('#encargar').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }), 380);
+    setOrder(true, true);
   });
   pd.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') fillProduct(pdIndex + 1, null, 1);
@@ -757,7 +781,7 @@
     else if (li && e.target.closest('[data-q-rm]')) setQty(li.dataset.id, 0);
   });
   $('[data-qd-continue]').addEventListener('click', () => {
-    closeDlg(qd, () => $('#encargar').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }));
+    closeDlg(qd, () => setOrder(true, true));
   });
   const clearBtn = $('#qd-clear');
   let clearTimer = 0;

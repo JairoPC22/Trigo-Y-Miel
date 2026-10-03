@@ -587,8 +587,11 @@
       <span class="ln"><span>estás <em>imaginando.</em></span></span>
     </h2>
     <p class="order__lead">Arma tu idea en tres pasos. Te dejamos un resumen listo para llevarlo a la sucursal o comentarlo por teléfono.</p>
+    <button type="button" class="btn btn--wine order__toggle" id="order-toggle" aria-expanded="false" aria-controls="order-panel"><span data-label>Armar mi pedido</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
   </div>
 
+  <div class="order__panel" id="order-panel">
+  <div class="order__panel-in">
   <form class="form" id="order-form" novalidate>
     <fieldset class="field">
       <legend><span>01</span>Ocasión</legend>
@@ -670,6 +673,8 @@
       <p class="summary__ok" id="copy-ok" role="status"></p>
     </div>
   </form>
+  </div>
+  </div>
 </section>
 
 <section class="ig" id="instagram" aria-labelledby="ig-title">
@@ -702,8 +707,8 @@
       <div class="foot__logo"><img src="trigo-y-miel-logo.png" width="447" height="447" alt="Trigo y Miel Pastelería Gourmet" loading="lazy"></div>
       <p>Pastelería gourmet en Chiautempan y Apizaco, Tlaxcala.</p>
     </div>
-    <nav class="foot__nav" aria-label="Explorar">
-      <h2>Explorar</h2>
+    <details class="foot__nav" open>
+      <summary><h2>Explorar</h2></summary>
       <ul>
         <li><a href="#especialidades">Especialidades</a></li>
         <li><a href="#catalogo">Catálogo</a></li>
@@ -711,24 +716,24 @@
         <li><a href="#sucursales">Sucursales</a></li>
         <li><a href="#encargar">Encargar</a></li>
       </ul>
-    </nav>
-    <nav class="foot__nav" aria-label="Información">
-      <h2>Información</h2>
+    </details>
+    <details class="foot__nav" open>
+      <summary><h2>Información</h2></summary>
       <ul>
         <li><button type="button" data-info="faq">Preguntas frecuentes</button></li>
         <li><button type="button" data-info="privacy">Aviso de privacidad</button></li>
         <li><button type="button" data-open-quote>Mi cotización</button></li>
       </ul>
-    </nav>
-    <div class="foot__nav">
-      <h2>Contacto</h2>
+    </details>
+    <details class="foot__nav" open>
+      <summary><h2>Contacto</h2></summary>
       <ul>
         <li><a href="tel:+522464272786">246 427 2786</a></li>
         <li><a href="https://wa.me/522464272786" target="_blank" rel="noopener">WhatsApp<span class="sr-only"> (se abre en otra pestaña)</span></a></li>
         <li><a href="https://www.facebook.com/PasteleriaTrigoyMiel" target="_blank" rel="noopener">Facebook</a></li>
         <li><a href="https://www.instagram.com/pasteleria_trigoymiel" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
-    </div>
+    </details>
   </div>
 
   <div class="foot__base">
